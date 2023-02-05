@@ -18,7 +18,7 @@ func main() {
 	r.POST("/task", controllers.CreateTask)
 	r.PUT("/task/:id", controllers.UpdateTask)
 	r.DELETE("/task/:id", controllers.DeleteTask)
-	if err := r.Run("localhost:5566"); err != nil {
+	if err := r.Run("0.0.0.0:5566"); err != nil {
 		panic(err)
 	}
 }
