@@ -1,15 +1,20 @@
 package main
 
 import (
-	"net/http"
+	"task/controllers"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default() //new gin router initialization
-	router.GET("/", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{"data": "Hello World !"})
-	})
-	router.Run(":5566")
+	r := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+
+	r.GET("/tasks", controllers.GetTasks)
+	r.POST("/task", controllers.CreateTask)
+	r.PUT("/task/:id", controllers.UpdateTask)
+	r.DELETE("/task/:id", controllers.DeleteTask)
+	if err := r.Run("localhost:5566"); err != nil {
+		panic(err)
+	}
 }
