@@ -11,6 +11,10 @@ import (
 
 var db *gorm.DB
 
+func GetDb() *gorm.DB {
+	return db
+}
+
 func DatabaseSetUp() {
 	var err error
 	db, err = gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
