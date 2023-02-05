@@ -1,14 +1,18 @@
 package main
 
 import (
-	"task/controllers"
+	"gogolook-interview/controllers"
+	"gogolook-interview/repositorys"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	r := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
+
+	r := gin.Default()
+
+	repositorys.DatabaseSetUp()
 
 	r.GET("/tasks", controllers.GetTasks)
 	r.POST("/task", controllers.CreateTask)

@@ -6,8 +6,8 @@ type CreateTaskRequest struct {
 
 type UpdateTaskRequest struct {
 	ID     int    `json:"id" uri:"id" binding:"required"`
-	Name   string `json:"name"`
-	Status bool   `json:"status"`
+	Name   string `json:"name,omitempty"`
+	Status int8   `json:"status,omitempty"`
 }
 
 type DeleteTaskRequest struct {
